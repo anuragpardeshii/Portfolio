@@ -3,14 +3,14 @@ export default function Hero() {
     <>
       <div
         className="flex justify-center items-center"
-        style={{ height: "85vh" }}
+        style={{ height: "85vh", marginBottom: "10vh" }}
       >
         <div className="flex justify-center items-center p-6">
           <div className="max-w-2xl">
-          <p className="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400">
-              I am Anurag Pardeshi,
+          <p className="text-lg mb-2 font-normal text-gray-500 dark:text-gray-400">
+              Hey! I'm Anurag Pardeshi,
             </p>
-            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">
+            <h1 className="mb-4 text-8xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">
             <span className="text-blue-600 dark:text-blue-500">Full Stack </span>  Developer
             </h1>
             <p className="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400">
