@@ -55,4 +55,5 @@ app.post('/send', (req, res) => {
   });
 });
 
+// Export the Express app
 module.exports = app;
