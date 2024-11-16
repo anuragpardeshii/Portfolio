@@ -1,84 +1,127 @@
+import { Link as ScrollLink } from "react-scroll"; // For smooth scrolling
+import { useState, useEffect } from "react";
+
 export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("home");
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/src/assets/files/Anurag-Pardeshi-Resume.pdf";
+    link.download = "Anurag-Pardeshi-Resume.pdf";
+    link.click();
+  };
+
+  // Function to handle scroll event and update active link
+  const handleScroll = () => {
+    const sections = ["home", "about", "experience", "skills", "projects"];
+    const scrollY = window.scrollY;
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (
+        element &&
+        scrollY >= element.offsetTop - 100 &&
+        scrollY < element.offsetTop + element.offsetHeight - 100
+      ) {
+        setActiveSection(section);
+      }
+    });
+  };
+
+  useEffect(() => {
+    // Add event listener on scroll
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Cleanup on component unmount
+    };
+  }, []);
+
+  // Function to apply active class based on the current section
+  const isActive = (section) =>
+    activeSection === section ? "text-blue-700" : "text-gray-900";
+
   return (
-    <nav class="bg-white border-gray-200 dark:bg-gray-900 w-100">
-      <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          href="/"
-          class="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-            <img src="/src/assets/Images/portfolio.png" alt="" style={{height: "2rem", padding: "0 1rem"}}/>
-            ANURAG PARDESHI's PORTFOLIO
-          
+    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+      <div className="flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img
+            src="/src/assets/Images/portfolio.png"
+            alt=""
+            style={{ height: "2rem", padding: "0 1rem" }}
+          />
+          Portfolio
         </a>
-        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
             type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={handleDownload}
           >
             Download Resume
           </button>
-          <button
-            data-collapse-toggle="navbar-cta"
-            type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-cta"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
         </div>
         <div
-          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"
         >
-          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a
-                href="#"
-                class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-                aria-current="page"
+              <ScrollLink
+                to="home"
+                smooth={true}
+                duration={500}
+                className={`block py-2 px-3 md:p-0 ${isActive("home")} rounded`}
               >
                 Home
-              </a>
+              </ScrollLink>
             </li>
             <li>
-              <a
-                href="#"
-                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <ScrollLink
+                to="about"
+                smooth={true}
+                duration={500}
+                className={`block py-2 px-3 md:p-0 ${isActive(
+                  "about"
+                )} rounded`}
               >
                 About
-              </a>
+              </ScrollLink>
             </li>
             <li>
-              <a
-                href="#"
-                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <ScrollLink
+                to="experience"
+                smooth={true}
+                duration={500}
+                className={`block py-2 px-3 md:p-0 ${isActive(
+                  "experience"
+                )} rounded`}
               >
-                Services
-              </a>
+                Experience
+              </ScrollLink>
             </li>
             <li>
-              <a
-                href="#"
-                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <ScrollLink
+                to="skills"
+                smooth={true}
+                duration={500}
+                className={`block py-2 px-3 md:p-0 ${isActive(
+                  "skills"
+                )} rounded`}
               >
-                Contact
-              </a>
+                Skills
+              </ScrollLink>
+            </li>
+            <li>
+              <ScrollLink
+                to="projects"
+                smooth={true}
+                duration={500}
+                className={`block py-2 px-3 md:p-0 ${isActive(
+                  "projects"
+                )} rounded`}
+              >
+                Projects
+              </ScrollLink>
             </li>
           </ul>
         </div>
