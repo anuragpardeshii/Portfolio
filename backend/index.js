@@ -11,13 +11,17 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(express.json());
+// CORS configuration
 app.use(cors({
-  origin: "https://anuragpardeshiportfolio.vercel.app/",  // Allow only the specified frontend domain
-  methods: ["POST", "GET"],
+  origin: 'https://anuragpardeshiportfolio.vercel.app', // Corrected to match the domain without trailing slash
+  methods: ['POST', 'GET', 'OPTIONS'], // Allow OPTIONS preflight requests
   credentials: true
 }));
 
+// Middleware
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Route to handle form submission
 app.post('/api/send', (req, res) => {
