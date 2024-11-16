@@ -13,7 +13,7 @@ const app = express();
 
 
 app.use(cors({
-  origin: "*",  // Allow only the specified frontend domain
+  origin: "https://anuragpardeshiportfolio.vercel.app/",  // Allow only the specified frontend domain
   methods: ["POST", "GET"],
   credentials: true
 }));
