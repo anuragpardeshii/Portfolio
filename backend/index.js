@@ -6,9 +6,6 @@ require('dotenv').config();
 
 const app = express();
 
-// Use the Vercel environment variable for port, default to 3000 if undefined
-const port = process.env.PORT || 3000;
-
 // Middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,7 +27,6 @@ app.post('/send', (req, res) => {
     },
   });
 
-  // Debug transporter
   transporter.verify((error, success) => {
     if (error) {
       console.log('Transporter Error:', error);
@@ -59,6 +55,4 @@ app.post('/send', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
-});
+module.exports = app;
