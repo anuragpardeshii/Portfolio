@@ -23,7 +23,7 @@ export default function About() {
     const formObject = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('http://localhost:3000/send', {
+      const response = await fetch('portfolio-api-alpha-six.vercel.app/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
