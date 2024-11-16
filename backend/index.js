@@ -1,8 +1,13 @@
+require('dotenv').config();
+
+// Check if the variables are loaded correctly
+console.log('EMAIL_USER:', process.env.EMAIL_USER);  // Debugging
+console.log('EMAIL_PASS:', process.env.EMAIL_PASS);  // Debugging
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 
@@ -11,10 +16,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-console.log("Email User:", process.env.EMAIL_USER); // Debugging .env
-
 // Route to handle form submission
-app.post('/send', (req, res) => {
+app.post('/api/send', (req, res) => {
   const { email, subject, message } = req.body;
 
   const transporter = nodemailer.createTransport({
