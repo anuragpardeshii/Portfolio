@@ -8,11 +8,23 @@ const app = express();
 const port = 3000;
 
 // CORS Configuration
+const allowedOrigins = [
+  'http://localhost:5174', // Development
+  'https://portfolio-api-alpha-six.vercel.app', // Production
+];
+
 const corsOptions = {
-  origin: 'https://portfolio-api-alpha-six.vercel.app/?vercelToolbarCode=5UdOwX9VK8Ks7_J', // Update with your frontend URL in production
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
 };
+
 
 // Middleware
 app.use(cors(corsOptions));
