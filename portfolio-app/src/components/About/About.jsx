@@ -28,20 +28,37 @@ export default function About() {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
 
-    axios.post("https://portfolio-api-alpha-six.vercel.app/api/send", formData)
-      .then(result => {
-        console.log(result);
-        setIsSubmitting(false);
-      })
-      .catch(err => {
-        console.log(err);
-        setIsSubmitting(false);
-      });
+const handleSubmit = (event) => {
+  event.preventDefault();
+  setIsSubmitting(true);
+
+  // Make sure formData is structured correctly and sent as JSON
+  const data = {
+    email: formData.email,
+    subject: formData.subject,
+    message: formData.message,
   };
+
+  axios.post("https://portfolio-api-alpha-six.vercel.app/api/send", data, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(result => {
+      console.log('Form submitted successfully:', result);
+      setIsSubmitting(false);
+      // Optionally, show success feedback to the user
+      alert("Email successfully sent!");
+    })
+    .catch(err => {
+      console.error('Error submitting form:', err);
+      setIsSubmitting(false);
+      // Optionally, show error feedback to the user
+      alert("There was an error submitting the form. Please try again.");
+    });
+};
+
 
   return (
     <div className="pt-6" style={{ margin: "auto", maxWidth: "75rem", marginBottom: "10vh" }}>

@@ -11,8 +11,16 @@ const cors = require('cors');
 
 const app = express();
 
+// CORS configuration
+const allowedOrigin = 'https://anuragpardeshiportfolio.vercel.app';
+
+app.use(cors({
+  origin: allowedOrigin,  // Allow only the specified frontend domain
+  methods: ["POST", "GET"],
+  credentials: true
+}));
+
 // Middleware
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
