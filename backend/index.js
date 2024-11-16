@@ -30,7 +30,8 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-console.log("Email User:", process.env.EMAIL_USER); // Debugging .env
+// Debugging .env
+console.log("Email User:", process.env.EMAIL_USER);
 
 // Test CORS Route
 app.get('/test-cors', (req, res) => {
@@ -54,7 +55,8 @@ app.post('/send', (req, res) => {
   // Debug transporter
   transporter.verify((error, success) => {
     if (error) {
-      console.log('Transporter Error:', error);
+      console.error('Transporter Error:', error);
+      return res.status(500).send('Transporter verification failed');
     } else {
       console.log('Server ready for emails');
     }
@@ -71,10 +73,10 @@ app.post('/send', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('Error sending email:', error);
-      res.status(500).send('Error sending email: ' + error.message);
+      return res.status(500).send('Error sending email: ' + error.message);
     } else {
       console.log('Email sent:', info.response);
-      res.status(200).send('Email successfully sent');
+      return res.status(200).send('Email successfully sent');
     }
   });
 });
