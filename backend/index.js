@@ -10,7 +10,7 @@ const port = 3000;
 // CORS Configuration
 const allowedOrigins = [
   'http://localhost:5174', // Development
-  'https://portfolio-api-alpha-six.vercel.app', // Production
+  // You can add production URLs here, e.g., 'https://yourwebsite.com'
 ];
 
 const corsOptions = {
@@ -44,7 +44,7 @@ app.post('/send', (req, res) => {
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
+    port: 587,  // Use port 465 for SSL if necessary
     secure: false, // Set to true if using SSL (for port 465)
     auth: {
       user: process.env.EMAIL_USER,
@@ -52,20 +52,20 @@ app.post('/send', (req, res) => {
     },
   });
 
-  // Debug transporter
+  // Debug transporter verification
   transporter.verify((error, success) => {
     if (error) {
-      console.error('Transporter Error:', error);
-      return res.status(500).send('Transporter verification failed');
+      console.error('Transporter verification failed:', error);
+      return res.status(500).send('Transporter verification failed: ' + error.message);
     } else {
-      console.log('Server ready for emails');
+      console.log('Transporter is ready to send emails');
     }
   });
 
   const mailOptions = {
     from: 'noreply@yourdomain.com',
     replyTo: email,
-    to: process.env.EMAIL_USER, // Change to your actual recipient email
+    to: process.env.EMAIL_USER, // Your actual recipient email
     subject: subject,
     text: message,
   };
