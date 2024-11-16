@@ -9,7 +9,7 @@ const port = 3000;
 
 // CORS Configuration
 const corsOptions = {
-  origin: 'http://localhost:5174', // Update with your frontend URL in production
+  origin: 'https://portfolio-api-alpha-six.vercel.app/?vercelToolbarCode=5UdOwX9VK8Ks7_J', // Update with your frontend URL in production
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
 };

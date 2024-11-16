@@ -15,15 +15,15 @@ export default function Experience() {
             <img src="/src/assets/Images/TEN.webp" alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}}/>
           </div>
           <div>
-            <h2 class="text-2xl font-bold dark:text-white">
+            <h2 className="text-2xl font-bold dark:text-white">
               The Entrepreneurship Network
             </h2>
-            <p class="text-lg text-gray-500">
+            <p className="text-lg text-gray-500">
               MERN stack Developer Intern &bull; October 2024 - Present*
             </p>
           </div>
         </div>
-        <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
+        <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
           Deliver great service experiences fast - without the complexity of
           traditional ITSM solutions. Accelerate critical development work,
           eliminate toil, and deploy changes with ease.
@@ -35,7 +35,7 @@ export default function Experience() {
         >
           The Entrepreneurship Network
           <svg
-            class="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+            className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -43,9 +43,9 @@ export default function Experience() {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
@@ -55,15 +55,15 @@ export default function Experience() {
             <img src="/src/assets/Images/EazyByts.webp" alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}} />
           </div>
           <div>
-            <h2 class="text-2xl font-bold dark:text-white">
+            <h2 className="text-2xl font-bold dark:text-white">
               EazyByts Infotech
             </h2>
-            <p class="text-lg text-gray-500">
+            <p className="text-lg text-gray-500">
               Full stack Developer Intern &bull; April 2024 - May 2024
             </p>
           </div>
         </div>
-        <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
+        <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
           Deliver great service experiences fast - without the complexity of
           traditional ITSM solutions. Accelerate critical development work,
           eliminate toil, and deploy changes with ease.
@@ -74,7 +74,7 @@ export default function Experience() {
         >
           EazyByts Infotech
           <svg
-            class="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+            className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -82,9 +82,9 @@ export default function Experience() {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
