@@ -2,8 +2,8 @@ export default function Hero() {
   return (
     <>
       <div
-        className="flex justify-center items-center"
-        style={{ height: "85vh", marginBottom: "10vh" }}
+        className="flex justify-center items-center flex-wrap"
+        style={{ height: "85vh" }}
       >
         <div className="flex justify-center items-center p-6">
           <div className="max-w-2xl">

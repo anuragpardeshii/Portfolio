@@ -6,7 +6,7 @@ export default function Navbar() {
           href="/"
           class="flex items-center space-x-3 rtl:space-x-reverse"
         >
-
+            <img src="/src/assets/Images/portfolio.png" alt="" style={{height: "2rem", padding: "0 1rem"}}/>
             ANURAG PARDESHI's PORTFOLIO
           
         </a>
