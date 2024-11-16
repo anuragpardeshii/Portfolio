@@ -5,38 +5,16 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
 
-// CORS Configuration
-const allowedOrigins = [
-  'http://localhost:5174', // Development
-  // You can add production URLs here, e.g., 'https://yourwebsite.com'
-];
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET,POST,PUT,DELETE,OPTIONS',
-  allowedHeaders: 'Content-Type,Authorization',
-};
+// Use the Vercel environment variable for port, default to 3000 if undefined
+const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Debugging .env
-console.log("Email User:", process.env.EMAIL_USER);
-
-// Test CORS Route
-app.get('/test-cors', (req, res) => {
-  res.json({ message: 'CORS is working!' });
-});
+console.log("Email User:", process.env.EMAIL_USER); // Debugging .env
 
 // Route to handle form submission
 app.post('/send', (req, res) => {
@@ -44,28 +22,28 @@ app.post('/send', (req, res) => {
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,  // Use port 465 for SSL if necessary
-    secure: false, // Set to true if using SSL (for port 465)
+    port: 587,
+    secure: false, // Use TLS
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
   });
 
-  // Debug transporter verification
+  // Debug transporter
   transporter.verify((error, success) => {
     if (error) {
-      console.error('Transporter verification failed:', error);
-      return res.status(500).send('Transporter verification failed: ' + error.message);
+      console.log('Transporter Error:', error);
+      return res.status(500).send('Error with email server configuration');
     } else {
-      console.log('Transporter is ready to send emails');
+      console.log('Server ready for emails');
     }
   });
 
   const mailOptions = {
     from: 'noreply@yourdomain.com',
     replyTo: email,
-    to: process.env.EMAIL_USER, // Your actual recipient email
+    to: process.env.EMAIL_USER,
     subject: subject,
     text: message,
   };
