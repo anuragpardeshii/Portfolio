@@ -25,13 +25,17 @@ const corsOptions = {
   allowedHeaders: 'Content-Type,Authorization',
 };
 
-
 // Middleware
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 console.log("Email User:", process.env.EMAIL_USER); // Debugging .env
+
+// Test CORS Route
+app.get('/test-cors', (req, res) => {
+  res.json({ message: 'CORS is working!' });
+});
 
 // Route to handle form submission
 app.post('/send', (req, res) => {
