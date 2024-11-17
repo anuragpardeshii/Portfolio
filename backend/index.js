@@ -5,25 +5,27 @@ const cors = require('cors');
 
 const app = express();
 
-// Middleware
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors(corsOptions));
-
 // CORS configuration
 const corsOptions = {
-  origin: '*', // Update to match your domain
-  credentials: true, //access-control-allow-credentials:true
+  origin: 'https://anuragpardeshiportfolio.vercel.app', // Your frontend domain
+  credentials: true, // Allows cookies
   optionSuccessStatus: 200,
 };
 
-// Handle preflight requests
-app.options('/api/send', cors(corsOptions));
+// Middleware
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Route to handle form submission
 app.post('/api/send', (req, res) => {
+  console.log('POST /api/send hit'); // Debugging: Check if route is hit
   const { email, subject, message } = req.body;
+
+  if (!email || !subject || !message) {
+    return res.status(400).send('All fields are required');
+  }
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -33,15 +35,6 @@ app.post('/api/send', (req, res) => {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
-  });
-
-  transporter.verify((error, success) => {
-    if (error) {
-      console.log('Transporter Error:', error);
-      return res.status(500).send('Error with email server configuration');
-    } else {
-      console.log('Server ready for emails');
-    }
   });
 
   const mailOptions = {
@@ -63,5 +56,6 @@ app.post('/api/send', (req, res) => {
   });
 });
 
-// Export the Express app
-module.exports = app;
+// Server start
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
