@@ -10,12 +10,16 @@ const port = process.env.PORT || 3000;
 console.log('Email User:', process.env.EMAIL_USER);
 
 // Enable CORS
-app.use(cors({
+const corsOptions = {
   origin: "https://anuragpardeshiportfolio.vercel.app", // Specific front-end domain
   methods: "POST",
-  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept"
-}));
+  allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  preflightContinue: true,
+  credentials: true
+};
 
+app.use(cors(corsOptions));
 // Middleware to parse JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
