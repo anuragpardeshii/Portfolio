@@ -16,7 +16,7 @@ export default function About() {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/assets/files/Anurag-Pardeshi-Resume.pdf"; // Ensure this is in the public folder
+    link.href = "/public/files/Anurag-Pardeshi-Resume.pdf"; // Ensure this is in the public folder
     link.download = "Anurag-Pardeshi-Resume.pdf";
     link.click();
   };
@@ -28,37 +28,35 @@ export default function About() {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-  setIsSubmitting(true);
+    // Make sure formData is structured correctly and sent as JSON
+    const data = {
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
 
-  // Make sure formData is structured correctly and sent as JSON
-  const data = {
-    email: formData.email,
-    subject: formData.subject,
-    message: formData.message,
-  };
-
-  axios.post("http://localhost:5000/send", data, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then(result => {
-      console.log('Form submitted successfully:', result);
-      setIsSubmitting(false);
-      // Optionally, show success feedback to the user
-      alert("Email successfully sent!");
+    axios.post("https://anuragpardeshiportfolio.vercel.app", data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
-    .catch(err => {
-      console.error('Error submitting form:', err);
-      setIsSubmitting(false);
-      // Optionally, show error feedback to the user
-      alert("There was an error submitting the form. Please try again.");
-    });
-};
-
+      .then(result => {
+        console.log('Form submitted successfully:', result);
+        setIsSubmitting(false);
+        // Optionally, show success feedback to the user
+        alert("Email successfully sent!");
+      })
+      .catch(err => {
+        console.error('Error submitting form:', err);
+        setIsSubmitting(false);
+        // Optionally, show error feedback to the user
+        alert("There was an error submitting the form. Please try again.");
+      });
+  };
 
   return (
     <div className="pt-6" style={{ margin: "auto", maxWidth: "75rem", marginBottom: "10vh" }}>
@@ -75,20 +73,28 @@ const handleSubmit = (event) => {
         <div className="flex flex-col gap-4">
           <div className="block max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Contact Info</h5>
-            <p className="font-normal p-2 text-gray-700 dark:text-gray-400"><LocalPhoneIcon style={{ fontSize: "2rem" }} /> &nbsp; : &nbsp; +91-8435304050</p>
-            <p className="font-normal p-2 text-gray-700 dark:text-gray-400"><EmailIcon style={{ fontSize: "2rem" }} /> &nbsp; : &nbsp; pardeshianurag22@gmail.com</p>
-            <p className="font-normal p-2 text-gray-700 dark:text-gray-400"><LocationOnIcon style={{ fontSize: "2rem" }} /> &nbsp; : &nbsp; Indore</p>
+            <p className="font-normal p-2 text-gray-700 dark:text-gray-400">
+              <LocalPhoneIcon style={{ fontSize: "2rem" }} /> &nbsp; : &nbsp; +91-8435304050
+            </p>
+            <p className="font-normal p-2 text-gray-700 dark:text-gray-400">
+              <EmailIcon style={{ fontSize: "2rem" }} /> &nbsp; : &nbsp; pardeshianurag22@gmail.com
+            </p>
+            <p className="font-normal p-2 text-gray-700 dark:text-gray-400">
+              <LocationOnIcon style={{ fontSize: "2rem" }} /> &nbsp; : &nbsp; Indore
+            </p>
           </div>
 
           <div className="block max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Social Links</h5>
             <div className="flex gap-4">
               <a href="https://www.linkedin.com/in/pardeshianurag22" target="_blank" rel="noopener noreferrer"
-                 className="p-1 bg-white border border-gray-200 rounded-lg shadow h-10 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                 className="p-1 bg-white border border-gray-200 rounded-lg shadow h-10 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                 aria-label="LinkedIn">
                 <LinkedInIcon style={{ fontSize: "2rem", color: "#0A66C2" }} /> LinkedIn
               </a>
               <a href="https://github.com/anuragpardeshii" target="_blank" rel="noopener noreferrer"
-                 className="p-1 bg-white border border-gray-200 rounded-lg shadow h-10 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                 className="p-1 bg-white border border-gray-200 rounded-lg shadow h-10 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                 aria-label="GitHub">
                 <GitHubIcon style={{ fontSize: "2rem", color: "black" }} /> GitHub
               </a>
             </div>
@@ -98,7 +104,8 @@ const handleSubmit = (event) => {
             <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Resume</h5>
             <div className="flex items-center justify-center">
               <button onClick={handleDownload}
-                      className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 gap-x-8">
+                      className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 gap-x-8"
+                      aria-label="Download Resume">
                 Download Resume
               </button>
             </div>
@@ -132,16 +139,20 @@ const handleSubmit = (event) => {
             </div>
             <div className="mb-6">
               <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-              <textarea id="message" name="message" rows="4"
-                        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Your message here..."
+              <textarea id="message" name="message"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        rows="4" placeholder="Write your message..."
                         value={formData.message}
-                        onChange={handleChange}></textarea>
+                        onChange={handleChange}
+                        required></textarea>
             </div>
-            <button type="submit" disabled={isSubmitting}
-                    className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-              {isSubmitting ? "Submitting..." : "Send Message"}
-            </button>
+            <div className="flex justify-center">
+              <button type="submit"
+                      className={`inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </button>
+            </div>
           </form>
         </div>
       </div>
