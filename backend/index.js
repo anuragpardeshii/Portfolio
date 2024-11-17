@@ -11,7 +11,7 @@ console.log('Email User:', process.env.EMAIL_USER);
 
 // Enable CORS
 app.use(cors({
-  origin: "https://anuragpardeshiportfolio.vercel.app",
+  origin: "https://anuragpardeshiportfolio.vercel.app", // Specific front-end domain
   methods: "POST",
   allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept"
 }));
