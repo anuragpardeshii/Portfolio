@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors(corsOptions));
 
 // CORS configuration
 const corsOptions = {
@@ -16,8 +17,6 @@ const corsOptions = {
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
-
-app.use(cors(corsOptions));
 
 // Handle preflight requests
 app.options('/api/send', cors(corsOptions));
