@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/api/send', (req, res) => {
+app.post('/send', (req, res) => {
   const { email, subject, message } = req.body;
 
   const transporter = nodemailer.createTransport({
