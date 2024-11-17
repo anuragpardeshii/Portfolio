@@ -1,31 +1,23 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-// CORS configuration
-const corsOptions = {
-  origin: 'https://anuragpardeshiportfolio.vercel.app', // Your frontend domain
-  credentials: true, // Allows cookies
-  optionSuccessStatus: 200,
-};
+// Log email user from environment variables
+console.log('Email User:', process.env.EMAIL_USER);
 
-// Middleware
-app.use(cors(corsOptions));
+// Enable CORS
+app.use(cors());
+
+// Middleware to parse JSON
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Route to handle form submission
 app.post('/api/send', (req, res) => {
-  console.log('POST /api/send hit'); // Debugging: Check if route is hit
   const { email, subject, message } = req.body;
-
-  if (!email || !subject || !message) {
-    return res.status(400).send('All fields are required');
-  }
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
