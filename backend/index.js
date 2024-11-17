@@ -10,14 +10,11 @@ const port = process.env.PORT || 3000;
 console.log('Email User:', process.env.EMAIL_USER);
 
 // Enable CORS
-app.use(cors());
-
 app.use(cors({
-  origin: "*" || "https://anuragpardeshiportfolio.vercel.app/", // Or replace "*" with the specific front-end domain
+  origin: "https://anuragpardeshiportfolio.vercel.app",
   methods: "POST",
   allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept"
 }));
-
 
 // Middleware to parse JSON
 app.use(express.json());
