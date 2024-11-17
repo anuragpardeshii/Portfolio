@@ -1,11 +1,11 @@
-// api/send.js
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   if (req.method === 'POST') {
     const { email, subject, message } = req.body;
 
+    // Create a transporter using SMTP and your Gmail account details
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
@@ -16,6 +16,7 @@ export default async function handler(req, res) {
       },
     });
 
+    // Define email options
     const mailOptions = {
       from: 'noreply@yourdomain.com',
       replyTo: email,
@@ -25,14 +26,16 @@ export default async function handler(req, res) {
     };
 
     try {
-      await transporter.sendMail(mailOptions);
-      res.status(200).json({ message: 'Email sent successfully!' });
+      // Send email
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Email sent:', info.response);
+      return res.status(200).send('Email successfully sent');
     } catch (error) {
       console.error('Error sending email:', error);
-      res.status(500).json({ error: 'Error sending email: ' + error.message });
+      return res.status(500).send('Error sending email: ' + error.message);
     }
   } else {
-    // Handle unsupported HTTP methods
-    res.status(405).json({ error: 'Method Not Allowed' });
+    // Respond with Method Not Allowed if the request method is not POST
+    res.status(405).send('Method Not Allowed');
   }
-}
+};
