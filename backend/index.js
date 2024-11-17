@@ -1,9 +1,3 @@
-require('dotenv').config();
-
-// Check if the variables are loaded correctly
-console.log('EMAIL_USER:', process.env.EMAIL_USER);  // Debugging
-console.log('EMAIL_PASS:', process.env.EMAIL_PASS);  // Debugging
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -22,6 +16,17 @@ app.use(cors({
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Handle preflight requests
+app.options('/api/send', cors());
+
+// Middleware to set CORS headers
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://anuragpardeshiportfolio.vercel.app'); // Update to match your domain
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 // Route to handle form submission
 app.post('/api/send', (req, res) => {

@@ -1,5 +1,6 @@
 import { Link as ScrollLink } from "react-scroll"; // For smooth scrolling
 import { useState, useEffect } from "react";
+import Portfolio from "/src/assets/Images/portfolio.png"
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
@@ -45,8 +46,8 @@ export default function Navbar() {
       <div className="flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src="/src/assets/Images/portfolio.png"
-            alt=""
+            src={Portfolio}
+            alt="Portfolio_img"
             style={{ height: "2rem", padding: "0 1rem" }}
           />
           Portfolio

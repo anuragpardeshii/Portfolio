@@ -1,7 +1,10 @@
+import ProfilePic from "/src/assets/Images/img.jpg";
+import DowmloadPDF from "/src/assets/files/Anurag-Pardeshi-Resume.pdf";
+
 export default function Hero() {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/src/assets/files/Anurag-Pardeshi-Resume.pdf"; // Path to your resume file in the public folder
+    link.href = DowmloadPDF; // Path to your resume file in the public folder
     link.download = "Anurag-Pardeshi-Resume.pdf"; // Name of the file after download
     link.click();
   };
@@ -86,7 +89,7 @@ export default function Hero() {
         <div className="flex justify-center items-center p-6">
           <img
             className="rounded-full w-96"
-            src="/src/assets/Images/img.jpg"
+            src={ProfilePic}
             alt="image description"
           />
         </div>

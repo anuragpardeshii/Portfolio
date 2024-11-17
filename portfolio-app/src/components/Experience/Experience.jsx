@@ -1,3 +1,6 @@
+import TEN from "/src/assets/Images/TEN.webp";
+import EazyByts from "/src/assets/Images/EazyByts.webp"
+
 export default function Experience() {
   return (
     <>
@@ -12,7 +15,7 @@ export default function Experience() {
         <div className="exp-icon flex items-center mb-4 flex-wrap justify-start gap-2">
 
           <div>
-            <img src="/src/assets/Images/TEN.webp" alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}}/>
+            <img src={TEN} alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}}/>
           </div>
           <div>
             <h2 className="text-2xl font-bold dark:text-white">
@@ -52,7 +55,7 @@ export default function Experience() {
         </a>
         <div className="exp-icon flex items-center mb-4 flex-wrap justify-start gap-2">
           <div>
-            <img src="/src/assets/Images/EazyByts.webp" alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}} />
+            <img src={EazyByts} alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}} />
           </div>
           <div>
             <h2 className="text-2xl font-bold dark:text-white">
