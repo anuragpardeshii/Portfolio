@@ -5,6 +5,7 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import axios from "axios";  // Import axios
+import Resume from "/src/assets/files/Anurag-Pardeshi-Resume.pdf"
 
 export default function About() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,7 +17,7 @@ export default function About() {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/public/files/Anurag-Pardeshi-Resume.pdf"; // Ensure this is in the public folder
+    link.href = Resume; // Ensure this is in the public folder
     link.download = "Anurag-Pardeshi-Resume.pdf";
     link.click();
   };
