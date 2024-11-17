@@ -1,13 +1,14 @@
 import { Link as ScrollLink } from "react-scroll"; // For smooth scrolling
 import { useState, useEffect } from "react";
 import Portfolio from "/src/assets/Images/portfolio.png"
+import Resume from "/src/assets/files/Anurag-Pardeshi-Resume.pdf";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/src/assets/files/Anurag-Pardeshi-Resume.pdf";
+    link.href = Resume;
     link.download = "Anurag-Pardeshi-Resume.pdf";
     link.click();
   };
