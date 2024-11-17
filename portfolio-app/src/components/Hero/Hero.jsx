@@ -1,10 +1,10 @@
 import ProfilePic from "/src/assets/Images/img.jpg";
-import DowmloadPDF from "/src/assets/files/Anurag-Pardeshi-Resume.pdf";
+import Resume from "/src/assets/files/Anurag-Pardeshi-Resume.pdf"
 
 export default function Hero() {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = DowmloadPDF; // Path to your resume file in the public folder
+    link.href = Resume; // Path to your resume file in the public folder
     link.download = "Anurag-Pardeshi-Resume.pdf"; // Name of the file after download
     link.click();
   };
