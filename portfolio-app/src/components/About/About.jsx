@@ -39,7 +39,7 @@ export default function About() {
       message: formData.message,
     };
 
-    axios.post("https://portfolio-api-five-zeta.vercel.app/send", data, {
+    axios.post("https://portfolio-backendd.vercel.app/send", data, {
       headers: {
         'Content-Type': 'application/json',
       },
