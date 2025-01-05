@@ -66,7 +66,7 @@ export default function Skills() {
   return (
     <>
       <div
-        className="pt-6"
+        className="pt-6 px-8"
         style={{ margin: "auto", maxWidth: "75rem", marginBottom: "10vh" }}
       >
         <h1 className="mb-4 pt-6 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
@@ -80,7 +80,7 @@ export default function Skills() {
           impactful applications with the latest tools and frameworks.
         </p>
 
-        <div className="flex p-6 gap-6 flex-wrap justify-center">
+        <div className="flex gap-6 flex-wrap justify-center">
           {data.map((item, index) => (
             <div
               key={index}

@@ -1,22 +1,15 @@
-import portfolioLogo from "/src/assets/Images/portfolio.png"; // Correctly import the logo
-
 export default function Footer() {
   return (
     <footer className="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
-      <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <div className="w-full max-w-screen-xl mx-auto p-6">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
-            href="https://flowbite.com/"
+            href=""
             className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
             aria-label="Flowbite homepage"
           >
-            <img
-              src={portfolioLogo}
-              className="h-6"
-              alt="Portfolio Logo"
-            />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Portfolio
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              Anurag Pardeshi's Portfolio
             </span>
           </a>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">

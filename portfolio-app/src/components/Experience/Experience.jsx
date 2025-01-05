@@ -5,17 +5,17 @@ export default function Experience() {
   return (
     <>
       <div
-        className="pt-6"
+        className="pt-6 px-8"
         style={{ margin: "auto", maxWidth: "75rem", marginBottom: "10vh" }}
       >
-        <h1 className="pt-6 mb-8 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        <h1 className="pt-6 mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
           Experience<span className="text-blue-600 dark:text-blue-500">.</span>
         </h1>
 
-        <div className="exp-icon flex items-center mb-4 flex-wrap justify-start gap-2">
+        <div className="exp-icon flex pt-4 items-center mb-4 flex-wrap justify-start gap-2">
 
           <div>
-            <img src={TEN} alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}}/>
+            <img className="py-2" src={TEN} alt="" style={{width: "5rem", borderRadius: ".5rem", marginRight: "1rem"}}/>
           </div>
           <div>
             <h2 className="text-2xl font-bold dark:text-white">

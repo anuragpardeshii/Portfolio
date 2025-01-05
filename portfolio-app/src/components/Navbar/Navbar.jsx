@@ -1,6 +1,5 @@
 import { Link as ScrollLink } from "react-scroll"; // For smooth scrolling
 import { useState, useEffect } from "react";
-import Portfolio from "/src/assets/Images/portfolio.png"
 import Resume from "/src/assets/files/Anurag-Pardeshi-Resume.pdf";
 
 export default function Navbar() {
@@ -45,12 +44,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src={Portfolio}
-            alt="Portfolio_img"
-            style={{ height: "2rem", padding: "0 1rem" }}
-          />
+        <a href="/" className="flex items-center text-extrabold text-xl text-blue-700 space-x-3 rtl:space-x-reverse">
           Portfolio
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -72,7 +66,7 @@ export default function Navbar() {
                 to="home"
                 smooth={true}
                 duration={500}
-                className={`block py-2 px-3 md:p-0 ${isActive("home")} rounded`}
+                className={`block py-2 px-3 cursor-pointer md:p-0 ${isActive("home")} rounded`}
               >
                 Home
               </ScrollLink>
@@ -82,7 +76,7 @@ export default function Navbar() {
                 to="about"
                 smooth={true}
                 duration={500}
-                className={`block py-2 px-3 md:p-0 ${isActive(
+                className={`block py-2 px-3 cursor-pointer md:p-0 ${isActive(
                   "about"
                 )} rounded`}
               >
@@ -94,7 +88,7 @@ export default function Navbar() {
                 to="experience"
                 smooth={true}
                 duration={500}
-                className={`block py-2 px-3 md:p-0 ${isActive(
+                className={`block py-2 px-3 cursor-pointer md:p-0 ${isActive(
                   "experience"
                 )} rounded`}
               >
@@ -106,7 +100,7 @@ export default function Navbar() {
                 to="skills"
                 smooth={true}
                 duration={500}
-                className={`block py-2 px-3 md:p-0 ${isActive(
+                className={`block py-2 px-3 cursor-pointer md:p-0 ${isActive(
                   "skills"
                 )} rounded`}
               >
@@ -118,7 +112,7 @@ export default function Navbar() {
                 to="projects"
                 smooth={true}
                 duration={500}
-                className={`block py-2 px-3 md:p-0 ${isActive(
+                className={`block py-2 px-3 cursor-pointer md:p-0 ${isActive(
                   "projects"
                 )} rounded`}
               >

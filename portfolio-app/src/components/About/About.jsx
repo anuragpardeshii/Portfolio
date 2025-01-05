@@ -60,7 +60,7 @@ export default function About() {
   };
 
   return (
-    <div className="pt-6" style={{ margin: "auto", maxWidth: "75rem", marginBottom: "10vh" }}>
+    <div className="pt-6 px-8 section xs:mb-4" style={{ margin: "auto", maxWidth: "75rem", marginBottom: "10vh" }}>
       <h1 className="pt-6 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
         About me <span className="text-blue-600 dark:text-blue-500">.</span>
       </h1>
